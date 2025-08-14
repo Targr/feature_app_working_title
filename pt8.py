@@ -299,8 +299,11 @@ def api_batch():
         "zip_base64": zip_b64
     })
 
+from pyngrok import ngrok
 
-# --- Run Server ---
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    public_url = ngrok.connect(port)
+    print(f"Public URL: {public_url}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
+
