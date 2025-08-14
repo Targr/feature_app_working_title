@@ -300,10 +300,14 @@ def api_batch():
     })
 
 from pyngrok import ngrok
+import threading
+
+def start_ngrok():
+    public_url = ngrok.connect(5000)
+    print(f"Public URL: {public_url.public_url}")
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # define the port
-    public_url = ngrok.connect(port)
-    print(f"Public URL: {public_url.public_url}")  # show actual URL
-    app.run(host="0.0.0.0", port=port, debug=True)
+    threading.Thread(target=start_ngrok, daemon=True).start()
+    app.run(host="0.0.0.0", port=5000, debug=True)
+
 
