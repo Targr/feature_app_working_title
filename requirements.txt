@@ -4,4 +4,5 @@ numpy
 opencv-python
 pandas
 trackpy
-ngrok
+pyngrok
+
