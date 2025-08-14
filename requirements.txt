@@ -1,0 +1,6 @@
+flask
+pillow
+numpy
+opencv-python
+pandas
+trackpy
